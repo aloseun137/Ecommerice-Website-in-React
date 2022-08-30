@@ -47,6 +47,19 @@ function App() {
     }
   }
 
+  const removeitem = (product) => {
+    // if hamro product alredy cart xa bhane  find garna help garxa
+    setCartItem(CartItem.filter((item) => item.id !== product.id))
+    // if productExit chai alredy exit in cart then will run fun() => setCartItem
+    // ani inside => setCartItem will run => map() ani yo map() chai each cart ma
+    // gayara check garxa if item.id ra product.id chai match bhayo bhane
+    // productExit product chai display garxa
+    // ani increase  exits product QTY by 1
+    // if item and product doesnt match then will add new items
+  }
+
+
+
   // Stpe: 6
   const decreaseQty = (product) => {
     // if hamro product alredy cart xa bhane  find garna help garxa
@@ -76,7 +89,7 @@ function App() {
             <Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} />
           </Route>
           <Route path='/cart' exact>
-            <Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />
+            <Cart CartItem={CartItem} removeitem={removeitem} addToCart={addToCart} decreaseQty={decreaseQty} />
           </Route>
         </Switch>
         <Footer />
